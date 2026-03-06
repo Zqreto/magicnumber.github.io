@@ -1,0 +1,588 @@
+/* Paleta de colores One Piece*/
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --oro:        #f5c518;
+  --oro-osc:    #c8960a;
+  --rojo:       #c0392b;
+  --rojo-osc:   #922b21;
+  --azul-mar:   #0d3b6e;
+  --azul-prof:  #071d3a;
+  --azul-claro: #1a6fa8;
+  --beige:      #f4e4b8;
+  --beige-osc:  #d4b483;
+  --marron:     #6b3d1e;
+  --marron-osc: #3e210d;
+  --blanco:     #fdf6e3;
+  --texto:      #2c1a0e;
+  --radio:      14px;
+}
+
+/* Fondo de oceano */
+body {
+  font-family: 'Crimson Pro', serif;
+  background: radial-gradient(ellipse at top, #0d2a4a 0%, #071525 60%, #020c18 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+
+
+/* Tarjeta principal */
+.pergamino {
+  background:
+    /* Textura de pergamino con gradiente */
+    radial-gradient(ellipse at top left, #f9edd8 0%, #f0d9a8 40%, #e8c87a 100%);
+  border-radius: 4px;
+  padding: 40px 36px 32px;
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+  z-index: 1;
+
+  /* Borde grueso estilo antiguo */
+  border: 4px solid var(--marron);
+  outline: 2px solid var(--oro-osc);
+  outline-offset: -8px;
+
+  box-shadow:
+    0 0 0 8px var(--marron-osc),
+    0 20px 60px rgba(0,0,0,0.8),
+    inset 0 2px 8px rgba(255,255,255,0.3);
+
+  animation: aparecerPergamino 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Esquinas decorativas del pergamino */
+.pergamino::before,
+.pergamino::after {
+  content: '✦';
+  position: absolute;
+  font-size: 20px;
+  color: var(--oro-osc);
+  opacity: 0.6;
+}
+.pergamino::before { top: 12px;  left: 16px; }
+.pergamino::after  { bottom: 12px; right: 16px; }
+
+@keyframes aparecerPergamino {
+  from { opacity: 0; transform: scale(0.85) rotate(-2deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+
+
+/* Calavera Flotante */
+.calavera-deco {
+  text-align: center;
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: 6px;
+  color: var(--marron-osc);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* Encabezado */
+.encabezado {
+  text-align: center;
+  margin-bottom: 26px;
+  border-bottom: 2px dashed var(--beige-osc);
+  padding-bottom: 20px;
+}
+
+.encabezado h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--marron-osc);
+  line-height: 1.3;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.4);
+}
+
+.encabezado h1 .rey {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--rojo);
+  display: block;
+  text-shadow: 2px 2px 0 var(--oro), 3px 3px 0 var(--marron-osc);
+}
+
+.subtitulo {
+  color: var(--marron);
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.subtitulo strong { color: var(--rojo); font-style: normal; font-weight: 700; }
+
+/* =============================================
+   ETIQUETAS DE SECCIÓN
+   ============================================= */
+.etiqueta {
+  display: block;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--marron);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/*Balas de cañon*/
+.balas-seccion { margin-bottom: 20px; }
+
+.balas {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.bala {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #888, #333);
+  border: 2px solid #222;
+  box-shadow: inset -3px -3px 6px rgba(0,0,0,0.5), 2px 2px 4px rgba(0,0,0,0.4);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+/* Bala usada y fallida, se rompe y se hace roja */
+.bala.usada {
+  background: radial-gradient(circle at 35% 35%, #c0392b, #7b241c);
+  border-color: var(--rojo-osc);
+  transform: scale(0.75);
+  box-shadow: 0 0 8px rgba(192,57,43,0.6);
+}
+
+/* Bala del intento correcto, dorada y grande */
+.bala.correcta {
+  background: radial-gradient(circle at 35% 35%, #f9d84a, #c8960a);
+  border-color: var(--oro-osc);
+  transform: scale(1.2);
+  box-shadow: 0 0 14px rgba(245,197,24,0.8);
+}
+
+/* Caja de pistas */
+.mensaje-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(107,61,30,0.12);
+  border: 2px solid var(--beige-osc);
+  border-radius: var(--radio);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  min-height: 60px;
+  transition: all 0.3s ease;
+}
+
+.icono-msg { font-size: 1.6rem; flex-shrink: 0; }
+
+#texto-msg {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--marron-osc);
+  line-height: 1.4;
+}
+
+/* Estados del mensaje */
+.mensaje-box.mayor { background: rgba(192,57,43,0.12); border-color: var(--rojo); }
+.mensaje-box.mayor #texto-msg { color: var(--rojo-osc); }
+
+.mensaje-box.menor { background: rgba(13,59,110,0.12); border-color: var(--azul-claro); }
+.mensaje-box.menor #texto-msg { color: var(--azul-mar); }
+
+.mensaje-box.bien  { background: rgba(200,150,10,0.15); border-color: var(--oro); }
+.mensaje-box.bien  #texto-msg { color: var(--marron-osc); }
+
+.mensaje-box.mal   { background: rgba(192,57,43,0.15); border-color: var(--rojo); }
+
+@keyframes sacudir {
+  0%, 100% { transform: translateX(0); }
+  20%  { transform: translateX(-8px) rotate(-1deg); }
+  40%  { transform: translateX(8px)  rotate(1deg); }
+  60%  { transform: translateX(-5px); }
+  80%  { transform: translateX(5px); }
+}
+
+.sacudir { animation: sacudir 0.45s ease; }
+
+/*Input del numero magico*/
+.entrada {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-wrap {
+  flex: 1;
+  position: relative;
+}
+
+/* Ícono de ancla dentro del input */
+.ancla {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 13px 14px 13px 36px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: var(--blanco);
+  border: 2px solid var(--beige-osc);
+  border-radius: var(--radio);
+  color: var(--marron-osc);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+input[type="number"]:focus {
+  border-color: var(--oro-osc);
+  box-shadow: 0 0 0 3px rgba(245,197,24,0.25);
+}
+
+input[type="number"]:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Botón de adivinar */
+#btn-adivinar {
+  padding: 13px 20px;
+  background: linear-gradient(135deg, var(--rojo), var(--rojo-osc));
+  color: var(--oro);
+  border: 3px solid var(--marron-osc);
+  border-radius: var(--radio);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 14px rgba(192,57,43,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+}
+
+#btn-adivinar:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(192,57,43,0.6);
+}
+
+#btn-adivinar:active:not(:disabled) { transform: translateY(0) scale(0.98); }
+
+#btn-adivinar:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+/* Bitacora o historial */
+.bitacora {
+  background: rgba(107,61,30,0.08);
+  border: 1.5px dashed var(--beige-osc);
+  border-radius: var(--radio);
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  min-height: 32px;
+  align-items: center;
+}
+
+.vacio {
+  color: var(--beige-osc);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Chips de intentos pasados */
+.chip {
+  padding: 4px 13px;
+  border-radius: 99px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 2px solid;
+  animation: popear 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popear {
+  from { transform: scale(0) rotate(-15deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);  opacity: 1; }
+}
+
+.chip.mayor { background: #fff0ee; color: var(--rojo);     border-color: var(--rojo); }
+.chip.menor { background: #eef4ff; color: var(--azul-mar); border-color: var(--azul-claro); }
+.chip.ok    { background: #fffbe6; color: var(--oro-osc);  border-color: var(--oro-osc); box-shadow: 0 0 8px rgba(245,197,24,0.4); }
+
+/* Divisor para la decoración*/
+.divisor {
+  text-align: center;
+  color: var(--beige-osc);
+  font-size: 0.85rem;
+  letter-spacing: 8px;
+  margin-top: 4px;
+}
+
+/* Overlay y modales */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 10, 22, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.overlay.activo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: radial-gradient(ellipse at top, #f9edd8, #e8c870);
+  border: 4px solid var(--marron);
+  outline: 2px solid var(--oro-osc);
+  outline-offset: -8px;
+  border-radius: 6px;
+  padding: 40px 32px;
+  text-align: center;
+  max-width: 360px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 6px var(--marron-osc), 0 30px 70px rgba(0,0,0,0.7);
+
+  transform: scale(0.6) rotate(-5deg);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.overlay.activo .modal { transform: scale(1) rotate(0deg); }
+
+.modal-icono {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 10px;
+  animation: rebotar 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s both;
+}
+
+@keyframes rebotar {
+  from { transform: scale(0) rotate(-30deg); }
+  to   { transform: scale(1) rotate(0deg); }
+}
+
+.modal h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.4);
+}
+
+.modal p {
+  font-size: 1rem;
+  line-height: 1.55;
+  margin-bottom: 24px;
+  color: var(--marron-osc);
+  font-style: italic;
+}
+
+/* Colores por tipo de modal */
+.modal-ganar h2 { color: var(--rojo); text-shadow: 2px 2px 0 var(--oro), 3px 3px 0 var(--marron-osc); }
+.modal-perder h2 { color: var(--rojo-osc); }
+
+/* Botones del modal */
+.btn-modal {
+  padding: 13px 30px;
+  border: 3px solid var(--marron-osc);
+  border-radius: var(--radio);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+}
+
+.btn-oro {
+  background: linear-gradient(135deg, var(--oro), var(--oro-osc));
+  color: var(--marron-osc);
+  box-shadow: 0 4px 14px rgba(200,150,10,0.5);
+}
+
+.btn-rojo {
+  background: linear-gradient(135deg, var(--rojo), var(--rojo-osc));
+  color: var(--oro);
+  box-shadow: 0 4px 14px rgba(192,57,43,0.5);
+}
+
+.btn-modal:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+}
+
+/* Confeti al ganar */
+.confeti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+
+.pieza-confeti {
+  position: absolute;
+  border-radius: 2px;
+  animation: caer linear forwards;
+}
+
+@keyframes caer {
+  0%   { transform: translateY(-10px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(420px) rotate(720deg); opacity: 0; }
+}
+
+/* Responsividad */
+@media (max-width: 480px) {
+  .pergamino   { padding: 28px 18px 24px; }
+  .entrada     { flex-direction: column; }
+  #btn-adivinar { width: 100%; }
+  .encabezado h1 { font-size: 1rem; }
+  .encabezado h1 .rey { font-size: 1.3rem; }
+  .bala { width: 26px; height: 26px; }
+  .modal { padding: 30px 22px; }
+}
+
+/* Modal de derrota */
+
+/* El modal de derrota es más oscuro y ancho para BB */
+.modal-perder {
+  background: radial-gradient(ellipse at bottom, #1a0a2e 0%, #0d0018 60%, #000 100%);
+  border-color: #4a0080;
+  outline-color: #7b00cc;
+  max-width: 400px;
+  overflow: visible; /* Para que BB se salga del modal */
+}
+
+.modal-perder h2 {
+  color: #cc44ff;
+  text-shadow: 0 0 20px #9900ff, 2px 2px 0 #000;
+  font-size: 1.5rem;
+}
+
+.modal-perder p {
+  color: #c8a0e0;
+  font-style: italic;
+}
+
+/* Contenedor de la imagen de BB */
+.bb-wrap {
+  position: relative;
+  width: 220px;
+  height: 200px;
+  margin: 0px auto 10px;
+  z-index: 10;
+}
+
+/* pixel art de BB */
+.bb-img {
+  width: 220px;
+  height: 200px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+
+  /* Entra con animación desde abajo */
+  animation: bbEntrar 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+
+  /* Brillo oscuro */
+  filter: drop-shadow(0 0 20px rgba(120, 0, 200, 0.9))
+          drop-shadow(0 0 40px rgba(80, 0, 150, 0.5));
+}
+
+/* Animación de entrada de BB */
+@keyframes bbEntrar {
+  from {
+    transform: scale(0.2) translateY(80px) rotate(-10deg);
+    opacity: 0;
+    filter: drop-shadow(0 0 60px rgba(120,0,200,1)) brightness(3);
+  }
+  to {
+    transform: scale(1) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Fondo del overlay de derrota*/
+#overlay-perder {
+  background: rgba(5, 0, 15, 0.85);
+}
+
+
+/* Modal de victoria Luffy*/
+.modal-ganar {
+  background: radial-gradient(ellipse at top, #fff8e1 0%, #f0d896 50%, #e8c86a 100%);
+  border-color: var(--marron);
+  outline-color: var(--oro);
+  overflow: visible; /* Para que Luffy sobresalga */
+}
+
+/* Contenedor del gif de Luffy */
+.luffy-wrap {
+  position: relative;
+  width: 180px;
+  height: 200px;
+  margin: 0px auto 4px;
+  z-index: 10;
+}
+
+/* Gif de Luffy */
+.luffy-img {
+  width: 180px;
+  height: 200px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  animation: luffyEntrar 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+  filter: drop-shadow(0 0 18px rgba(245, 197, 24, 0.95))
+          drop-shadow(0 0 40px rgba(255, 160, 0, 0.5));
+}
+
+/* Luffy entra desde abajo con un salto */
+@keyframes luffyEntrar {
+  from {
+    transform: scale(0.2) translateY(80px) rotate(10deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
