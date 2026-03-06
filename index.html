@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Número del Rey Pirata</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="ola ola2"></div>
+    <div class="ola ola3"></div>
+  </div>
+
+
+
+  <!-- Tarjeta principal del juego -->
+  <div class="pergamino">
+
+    <div class="calavera-deco">☠</div>
+
+    <div class="encabezado">
+      <h1>El Número del<br><span class="rey">Rey Pirata</span></h1>
+      <p class="subtitulo">Encuentra el número secreto entre <strong>1</strong> y <strong>100</strong><br>antes de que acaben tus balas de cañón</p>
+    </div>
+
+    <div class="balas-seccion">
+      <span class="etiqueta">⚓ Balas de Cañón</span>
+      <div class="balas" id="balas"></div>
+    </div>
+
+    <div class="mensaje-box" id="mensaje-box">
+      <span class="icono-msg" id="icono-msg">🗺️</span>
+      <span id="texto-msg">¡Adivina el número mágico, marinero!</span>
+    </div>
+
+    <div class="entrada">
+      <div class="input-wrap">
+        <span class="ancla">⚓</span>
+        <input type="number" id="input-numero" min="1" max="100" placeholder="Tu número..." autocomplete="off">
+      </div>
+      <button id="btn-adivinar" onclick="adivinar()">¡Adivinar!</button>
+    </div>
+
+    <div class="bitacora">
+      <span class="etiqueta">📜 Bitácora de intentos</span>
+      <div class="chips" id="chips">
+        <span class="vacio">Sin registros aún...</span>
+      </div>
+    </div>
+
+    <div class="divisor">⚓ ☠ ⚓</div>
+
+  </div>
+
+  <!--MODAL VICTORIA-->
+  <div class="overlay" id="overlay-ganar">
+    <div class="modal modal-ganar">
+      <div class="confeti" id="confeti"></div>
+
+      <!-- Luffy victoria -->
+      <div class="luffy-wrap">
+        <img src="assets/luffy.gif" alt="Luffy" class="luffy-img" id="luffy-img">
+        <div class="luffy-brillo"></div>
+      </div>
+
+      <h2>¡KING OF THE PIRATES!</h2>
+      <p id="msg-ganar"></p>
+      <button class="btn-modal btn-oro" onclick="reiniciar()">⚓ Zarpar de nuevo</button>
+    </div>
+  </div>
+
+  <!--MODAL DERROTA  -->
+  <div class="overlay" id="overlay-perder">
+    <div class="modal modal-perder">
+
+      <!-- Barba Negra gif -->
+      <div class="bb-wrap">
+        <img src="assets/blackbeard.gif" alt="Barba Negra" class="bb-img" id="bb-img">
+        <div class="bb-oscuridad"></div>
+      </div>
+
+      <h2>¡ZEHAHAHAHA!</h2>
+      <p id="msg-perder"></p>
+      <button class="btn-modal btn-rojo" onclick="reiniciar()">🔄 Volver al mar</button>
+    </div>
+  </div>
+
+  <!-- Audio victoria -->
+  <audio id="audio-victoria" src="assets/victoria.mp3" preload="auto"></audio>
+
+  <!-- Audio risa de Barba Negra -->
+  <audio id="audio-bb" src="assets/zehahahaha.mp3" preload="auto"></audio>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
