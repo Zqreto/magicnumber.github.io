@@ -228,13 +228,7 @@ document.getElementById("input-numero").addEventListener("keypress", function(e)
   if (e.key === "Enter") adivinar();
 });
 
-// Cerrar modales haciendo clic en el fondo
-document.getElementById("overlay-ganar").addEventListener("click", function(e) {
-  if (e.target === this) reiniciar();
-});
-document.getElementById("overlay-perder").addEventListener("click", function(e) {
-  if (e.target === this) reiniciar();
-});
+// Los modales solo se cierran con el botón, no al hacer clic en el fondo
 
 
 // Arranque
